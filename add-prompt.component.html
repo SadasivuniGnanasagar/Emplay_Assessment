@@ -1,0 +1,28 @@
+<h2>Add Prompt</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <input formControlName="title" placeholder="Title">
+  <div *ngIf="form.get('title')?.touched && form.get('title')?.invalid">
+    Title must be at least 3 characters
+  </div>
+
+  <br><br>
+
+  <textarea formControlName="content" placeholder="Content"></textarea>
+  <div *ngIf="form.get('content')?.touched && form.get('content')?.invalid">
+    Content must be at least 20 characters
+  </div>
+
+  <br><br>
+
+  <input type="number" formControlName="complexity">
+  <div *ngIf="form.get('complexity')?.invalid">
+    Complexity must be between 1 and 10
+  </div>
+
+  <br><br>
+
+  <button type="submit" [disabled]="form.invalid">Add</button>
+
+</form>
